@@ -1,18 +1,17 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
-import { Container } from './styles';
+import { Container } from "./styles";
 
 interface CartProps {
   children: ReactNode;
 }
 
-function Cart({ children }: CartProps) {
+function Cart() {
   return (
     <Container>
       <h1>Cart</h1>
-      {children}
     </Container>
   );
-};
+}
 
 export default Cart;
