@@ -52,6 +52,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
             "@RocketShoes:cart",
             JSON.stringify([...cart, { ...product, amount: 1 }])
           );
+          toast("Adicionado");
+          return;
         }
       }
 
