@@ -62,14 +62,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         const { data: stock } = await api.get(`/stock/${productId}`);
 
         if (stock.amount > productAlreadyInCart.amount) {
-          const updatedCart = cart.map((cartItem) => {
+          const updatedCart = cart.map((cartItem) =>
             cartItem.id === productId
               ? {
                   ...cartItem,
                   amount: Number(cartItem.amount) + 1,
                 }
-              : cartItem;
-          });
+              : cartItem
+          );
 
           setCart(updatedCart);
           localStorage.setItem("@RocketShoes", JSON.stringify(updatedCart));
