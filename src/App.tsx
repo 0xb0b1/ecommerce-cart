@@ -1,20 +1,26 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStyles from "./styles/global";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import Header from "./components/Header";
-import Home from "./pages/Home";
+import { CartProvider } from "./hooks/useCart";
 import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import GlobalStyles from "./styles/global";
 
 function App(): JSX.Element {
   return (
     <BrowserRouter>
-      <GlobalStyles />
-      <Header />
+      <CartProvider>
+        <GlobalStyles />
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+
+        <ToastContainer autoClose={3000} />
+      </CartProvider>
     </BrowserRouter>
   );
 }

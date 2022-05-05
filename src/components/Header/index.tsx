@@ -1,17 +1,31 @@
-import { ReactNode } from "react";
+import { MdShoppingBasket } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-import { Container } from "./styles";
+import logo from "../../assets/images/logo.svg";
+import { useCart } from "../../hooks/useCart";
+import { Cart, Container } from "./styles";
 
-interface HeaderProps {
-  children: ReactNode;
-}
+const Header = (): JSX.Element => {
+  const { cart } = useCart();
+  // const cartSize = // TODO;
 
-function Header() {
   return (
     <Container>
-      <h1>Header</h1>
+      <Link to="/">
+        <img src={logo} alt="Rocketshoes" />
+      </Link>
+
+      <Cart to="/cart">
+        <div>
+          <strong>Meu carrinho</strong>
+          <span data-testid="cart-size">
+            {/* {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`} */}1
+          </span>
+        </div>
+        <MdShoppingBasket size={36} color="#FFF" />
+      </Cart>
     </Container>
   );
-}
+};
 
 export default Header;
