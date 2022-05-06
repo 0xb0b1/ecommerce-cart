@@ -7,11 +7,12 @@ import { Cart, Container } from "./styles";
 
 const Header = (): JSX.Element => {
   const { cart } = useCart();
-  const cartSize = cart
-    .map((item) => item.amount)
-    .reduce((previousValue, currentValue) => {
-      return previousValue + currentValue;
-    });
+  const cartSize = cart.length;
+  // const cartSize = cart
+  //   .map((item) => item.amount)
+  //   .reduce((previousValue, currentValue) => {
+  //     return previousValue + currentValue;
+  //   });
 
   return (
     <Container>
