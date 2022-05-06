@@ -36,7 +36,7 @@ const Home = (): JSX.Element => {
       const productsFormated = response.data.map((product: Product) => {
         return { ...product, price: formatPrice(product.price) };
       });
-      setProducts(response.data);
+      setProducts(productsFormated);
     }
 
     loadProducts();
@@ -48,11 +48,11 @@ const Home = (): JSX.Element => {
 
   return (
     <ProductList>
-      {products?.map((product) => (
+      {products.map((product) => (
         <li key={product.id}>
           <img src={product.image} alt={product.title} />
           <strong>{product.title}</strong>
-          <span>{formatPrice(product.price)}</span>
+          <span>{product.price}</span>
           <button
             type="button"
             data-testid="add-product-button"
