@@ -7,7 +7,11 @@ import { Cart, Container } from "./styles";
 
 const Header = (): JSX.Element => {
   const { cart } = useCart();
-  const cartSize = 1;
+  const cartSize = cart
+    .map((item) => item.amount)
+    .reduce((previousValue, currentValue) => {
+      return previousValue + currentValue;
+    });
 
   return (
     <Container>
@@ -19,7 +23,7 @@ const Header = (): JSX.Element => {
         <div>
           <strong>Meu carrinho</strong>
           <span data-testid="cart-size">
-            {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}1
+            {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
           </span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
