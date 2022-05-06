@@ -31,20 +31,20 @@ const Home = (): JSX.Element => {
   }, {} as CartItemsAmount);
 
   useEffect(() => {
-    async function loadProducts() {
+    const loadProducts = async () => {
       const response = await api.get("/products");
       const productsFormated = response.data.map((product: Product) => {
         return { ...product, price: formatPrice(product.price) };
       });
       setProducts(productsFormated);
-    }
+    };
 
     loadProducts();
   }, []);
 
-  function handleAddProduct(id: number) {
+  const handleAddProduct = (id: number) => {
     addProduct(id);
-  }
+  };
 
   return (
     <ProductList>

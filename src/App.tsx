@@ -19,7 +19,7 @@ function App(): JSX.Element {
           <Route path="/cart" element={<Cart />} />
         </Routes>
 
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={2000} />
       </CartProvider>
     </BrowserRouter>
   );
