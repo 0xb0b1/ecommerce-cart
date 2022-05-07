@@ -23,7 +23,7 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cart, setCart] = useState<Product[]>(() => {
-    const storagedCart = localStorage.getItem("@RocketShoes:cart");
+    const storagedCart = localStorage.getItem("@ShopProducts:items");
 
     if (storagedCart) {
       return JSON.parse(storagedCart);
@@ -49,7 +49,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         if (stock.amount > 0) {
           setCart([...cart, { ...product, amount: 1 }]);
           localStorage.setItem(
-            "@RocketShoes:cart",
+            "@ShopProducts:items",
             JSON.stringify([...cart, { ...product, amount: 1 }])
           );
           toast("Adicionado");
@@ -73,7 +73,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
           setCart(updatedCart);
           localStorage.setItem(
-            "@RocketShoes:cart",
+            "@ShopProducts:items",
             JSON.stringify(updatedCart)
           );
           return;
@@ -104,7 +104,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         (productCart) => productCart.id !== productId
       );
       setCart(updateCart);
-      localStorage.setItem("@RocketShoes:cart", JSON.stringify(updateCart));
+      localStorage.setItem("@ShopProducts:items", JSON.stringify(updateCart));
     } catch {
       toast.error("Erro na remoção do produto");
     }
@@ -147,7 +147,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
           : cartItem
       );
       setCart(updateCart);
-      localStorage.setItem("@RocketShoes:cart", JSON.stringify(updateCart));
+      localStorage.setItem("@ShopProducts:items", JSON.stringify(updateCart));
     } catch {
       toast.error("Erro na alteração de quantided do produto");
     }
