@@ -17,7 +17,7 @@ const Header = (): JSX.Element => {
   return (
     <Container>
       <Link to="/">
-        <img src={logo} alt="Rocketshoes" />
+        <img src={logo} alt="ShopProducts" />
       </Link>
 
       <Cart to="/cart">
